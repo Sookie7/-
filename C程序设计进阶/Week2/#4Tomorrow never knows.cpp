@@ -24,7 +24,7 @@
 2010-07-05
 样例输出
 
-2010-07-06
+2010-07-06                                                                                                               
 提示
 
 闰年的标准：
@@ -41,7 +41,64 @@
 #include <iomanip>
 using namespace std;
 
-int main() {
+bool isLeapYear(int year) {
+	if (year % 4 == 0 && year % 100 != 0) {
+		return true;
+	} else if (year % 400 == 0) {
+		return true;
+	} else {
+		return false;
+	}
+}
 
+int main() {
+	int year, month, day;
+	char line_1,line_2;
+	cin >> year >> line_1 >>  month >> line_2 >> day;
+	if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10) {
+		if (day < 31) {
+			day ++;
+		} else if (day == 31) {
+			day = 1;
+			month ++;
+		}
+	} else if (month == 4 || month == 6 || month == 9 || month == 11) {
+		if (day < 30) {
+			day ++;
+		} else if (day == 30) {
+			day	 = 1;
+			month ++;
+		}
+	} else if (month == 2) {
+		if (day < 28) {
+			day ++;
+		} else {
+			if (isLeapYear(year)) {
+				if (day == 28) {
+					day ++;
+				} else if (day == 29) {
+					day = 1;
+					month ++;
+				}
+			} else {
+				if (day == 28) {
+					day = 1;
+					month ++;
+				}	
+			}
+		}
+	} else if (month == 12) {
+		if (day < 31) {
+			day ++;
+		} else if (day == 31) {
+			day = 1;
+			month = 1;
+			year ++;
+		}
+	}
+
+	cout << setfill('0') << setw(4) << year;
+	cout << "-" << setfill('0') << setw(2) << month;
+	cout << "-" << setfill('0') << setw(2) << day << endl;
 	return 0;
 }
