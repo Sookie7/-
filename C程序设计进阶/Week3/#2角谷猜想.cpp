@@ -69,6 +69,27 @@ End
 #include <iomanip>
 using namespace std;
 
+void collatz_conjecture(int input) {
+	if (input == 1) {
+		cout << "End" << endl;
+		return;
+	} else if (input % 2 != 0 ) {
+		cout << input << "*3+1=" ;
+		input = (input * 3 + 1);
+		cout<< input << endl;
+	} else {
+		cout << input << "/2=" ;
+		input = (input / 2);
+		cout<< input << endl;
+	}
+	collatz_conjecture(input);
+
+}
+
 int main() {
+	int integer;
+	cin >> integer;
+	collatz_conjecture(integer);
+
 	return 0;
 }
