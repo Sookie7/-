@@ -29,6 +29,27 @@ olleh    .dlrow
 #include <iostream>
 #include <iomanip>
 using namespace std;
+void reverse_word(char *str) {
+	
+	if (*str && *str == ' ') {
+		 cout.put(*str ++);
+	}
+	if (!(*str))	{
+		return;
+	}
+	char * next = str;
+	while(*next && *next != ' ') {
+		next ++;
+	}
+	char * end = next - 1;
+	while (end != str-1) {
+		cout.put(*end--);
+	}
+	reverse_word(next);
+}
 int main() {
+	char sentence[500];
+	cin.getline(sentence,500);
+	reverse_word(sentence);
 	return 0;
 }
