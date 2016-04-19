@@ -35,7 +35,34 @@
 #include <iomanip>
 using namespace std;
 
-int main() {
+void order_game(char *str, int f_girl, char boyc, char girlc) {
+	while (str[f_girl] && str[f_girl] != girlc) {
+		f_girl ++;
+	}
+	if (str[f_girl] == '\0') {
+		return;
+	}
+	int f_boy = f_girl;
+	while (str[f_boy] && str[f_boy] != boyc) {
+		f_boy--;
+	}
+	char sign = boyc + girlc;
+	if (f_boy >= 0 ) {
+		str[f_boy] = sign;
+		str[f_girl] = sign;
+		cout << f_boy << " " << f_girl <<endl;
+	}
+	order_game(str, f_girl,boyc,girlc);
+}
 
+int main() {
+	char que[100];
+	cin.getline(que, 100);	
+	char * girl = (que + 1);
+	
+	while (*girl && *girl == que[0]) {
+		girl++;
+	}
+	order_game(que, 0, que[0], *girl);
 	return 0;
 }
