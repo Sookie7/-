@@ -33,17 +33,14 @@ $$
 *******************************************************/
 #include <iostream>
 #include <iomanip>
-#include <string.h>
-#include <stdio.h>
-#include <stack>
-
 using namespace std;
+
 void order_game(char *str, int f_right) {
 	while (str[f_right] && str[f_right] != ')') {
 		f_right ++;
 	}
 	if (str[f_right] == '\0') {
-		for(int i = 0; i < strlen(str); i++) {
+		for(int i = 0; i < f_right; i++) {
 			if (str[i] == '(') {
 				cout << '$';
 			} else if (str[i] == ')') {
@@ -69,8 +66,7 @@ void order_game(char *str, int f_right) {
 int main() {
 	int length;
 	char que[110];
-	// while(scanf("%s",que)!=EOF) {
-	while(cin.getline(que, 101, '\n')){
+	while(cin.getline(que, 101)){
 		order_game(que, 0);
 		cout << endl;
 	} 
