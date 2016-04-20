@@ -34,7 +34,10 @@
 #include <iostream>
 #include <iomanip>
 using namespace std;
-
+/*
+** @brief 找到一个女孩所在位置，并找到和这个女孩牵手
+**
+*/
 void order_game(char *str, int f_girl, char boyc, char girlc) {
 	while (str[f_girl] && str[f_girl] != girlc) {
 		f_girl ++;
