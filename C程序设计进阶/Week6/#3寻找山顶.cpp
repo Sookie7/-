@@ -42,7 +42,25 @@ int main(){
 	int datas[row][col];
 	for (int i = 0 ; i < row; i ++) {
 		for (int j = 0; j < col; j++) {
-			cin >> datas[row][col];
+			cin >> datas[i][j];
+		}
+	}
+
+	for (int i = 0; i < row; i++) {
+		for (int j = 0; j < col; j++) {
+			if (i > 0 && datas[i - 1][j] > datas[i][j]) {
+				continue;
+			}
+			if (j > 0 && datas[i][j - 1] > datas[i][j]) {
+				continue;
+			}
+			if (i < row - 1 && datas[i + 1][j] > datas[i][j]) {
+				continue;
+			} 
+			if (j < col - 1 && datas[i][j + 1] > datas[i][j]) {
+				continue;
+			} 
+				cout << i << " " << j << endl;
 		}
 	}
 	return 0;
